@@ -99,10 +99,14 @@ last_block = blockchain.latest_block
 last_proof_no = last_block.proof_no
 proof_no = blockchain.proof_of_work(last_proof_no)
 
+sender = input("Enter Sender Address: ")
+recipient = input("Enter Recipient: ")
+quantity = int(input("Enter Quantity: "))
+
 blockchain.new_data(
-  sender="0",
-  recipient="neeltron",
-  quantity=1,
+  sender = sender,
+  recipient = recipient,
+  quantity = quantity,
 )
 
 last_hash = last_block.calculate_hash
