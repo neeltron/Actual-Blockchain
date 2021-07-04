@@ -13,7 +13,6 @@ class Block:
   @property
   def calculate_hash(self):
     block_of_string = "{}{}{}{}{}".format(self.index, self.proof_no, self.prev_hash, self.data, self.timestamp)
-
     return hashlib.sha256(block_of_string.encode()).hexdigest()
 
   def __repr__(self):
@@ -49,7 +48,6 @@ class BlockChain:
 
     elif block.timestamp <= prev_block.timestamp:
       return False
-
     return True
 
   def new_data(self, sender, recipient, quantity):
@@ -75,17 +73,12 @@ class BlockChain:
     return self.chain[-1]
 
   def block_mining(self, details_miner):
-
     self.new_data(sender="0", recipient=details_miner,quantity=1,)
-
     last_block = self.latest_block
-
     last_proof_no = last_block.proof_no
     proof_no = self.proof_of_work(last_proof_no)
-
     last_hash = last_block.calculate_hash
     block = self.construct_block(proof_no, last_hash)
-
     return vars(block)
 
   def create_node(self, address):
@@ -99,8 +92,7 @@ class BlockChain:
 
 
 blockchain = BlockChain()
-
-print("***Mining fccCoin about to start***")
+print("Mining")
 print(blockchain.chain)
 
 last_block = blockchain.latest_block
